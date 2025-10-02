@@ -15,7 +15,6 @@
     background: black;
   }
 
-  /* Canvas covers the entire background */
   canvas#starsCanvas {
     position: fixed;
     top: 0;
@@ -94,22 +93,18 @@
 </head>
 <body>
 
-<!-- Star particles canvas -->
 <canvas id="starsCanvas"></canvas>
 
-<!-- Lofi music -->
 <audio autoplay loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Main Banner -->
 <header>
   <img src="https://i.pinimg.com/736x/d8/15/ad/d815ad974fea7c94f87b8374513ac199.jpg" alt="Profile">
   <h1>Nebulance</h1>
   <p>The way easier to buy robux and diamond 😉</p>
 </header>
 
-<!-- Scroll Section -->
 <section class="topup-section">
   <h2>Top Up Games</h2>
   <button onclick="window.open('roblox.html','_blank')">Roblox</button>
@@ -121,7 +116,7 @@
   const canvas = document.getElementById('starsCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
-  const numStars = 200;
+  const numStars = 250;
 
   function resizeCanvas(){
     canvas.width = window.innerWidth;
@@ -130,7 +125,6 @@
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  // Star object
   class Star {
     constructor(){
       this.reset();
@@ -141,10 +135,14 @@
       this.size = Math.random() * 2 + 0.5;
       this.speed = Math.random() * 0.5 + 0.1;
       this.alpha = Math.random();
+      this.delta = Math.random() * 0.02;
     }
     update(){
       this.y -= this.speed;
       if(this.y < 0) this.y = canvas.height;
+      // twinkle
+      this.alpha += this.delta;
+      if(this.alpha <= 0 || this.alpha >= 1) this.delta = -this.delta;
     }
     draw(){
       ctx.globalAlpha = this.alpha;
