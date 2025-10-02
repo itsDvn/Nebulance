@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nebulance Top-Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b1c;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: url('https://imgur.com/gallery/discord-banner-fWaAswn#o20avW3') center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-right: 20px;
+    }
+    .profile-info {
+      font-size: 18px;
+    }
+    .scroll-popup {
+      position: fixed;
+      bottom: -400px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 500px;
+      background: #1a1a2e;
+      padding: 20px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+      transition: bottom 0.5s ease;
+      z-index: 1000;
+    }
+    .scroll-popup.active {
+      bottom: 0;
+    }
+    .scroll-popup h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .topup-buttons button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #4b47f6;
+      color: #fff;
+      transition: background 0.3s;
+    }
+    .topup-buttons button:hover {
+      background: #6d6aff;
+    }
+    .bottom-text {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="profile">
+      <img src="https://i.pinimg.com/736x/d8/15/ad/d815ad974fea7c94f87b8374513ac199.jpg" alt="Profile">
+      <div class="profile-info">
+        <h1>Nebulance</h1>
+        <p>The way easier to buy robux and diamond 😉</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="scroll-popup" id="popup">
+    <h3>Top Up</h3>
+    <div class="topup-buttons">
+      <button onclick="openRoblox()">Roblox</button>
+      <button onclick="openFreeFire()">Free Fire</button>
+    </div>
+  </div>
+
+  <div class="bottom-text">
+    Scroll to top-up!
+  </div>
+
+  <script>
+    // Show popup on scroll
+    window.addEventListener('scroll', () => {
+      const popup = document.getElementById('popup');
+      if(window.scrollY > 100){
+        popup.classList.add('active');
+      } else {
+        popup.classList.remove('active');
+      }
+    });
+
+    function openRoblox(){
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(`
+        <html>
+        <head>
+          <title>Roblox Top-Up</title>
+          <style>
+            body { font-family: Arial; background:#0b0b1c; color:#fff; margin:0; padding:0;}
+            .banner { width:100%; height:200px; background:url('https://foto.kontan.co.id/Z0bOqeucfbxVayBtbE3AHdGSmMo=/smart/2020/09/02/107030245p.jpg') center/cover no-repeat; }
+            .choices { padding:20px; }
+            button { width:100%; margin:10px 0; padding:15px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background:#4b47f6; color:#fff; }
+            button:hover { background:#6d6aff; }
+          </style>
+        </head>
+        <body>
+          <div class="banner"></div>
+          <div class="choices">
+            <h3>Choose Robux Amount</h3>
+            <button onclick="payment('10.000')">90 Robux - 10.000</button>
+            <button onclick="payment('85.000')">400 Robux - 85.000</button>
+            <button onclick="payment('180.000')">1.000 Robux - 180.000</button>
+          </div>
+          <script>
+            function payment(amount){
+              const method = prompt('Choose payment method: WhatsApp or GoPay').toLowerCase();
+              if(method === 'whatsapp'){
+                window.open('https://wa.me/82131800830?text=Hi%20I%20want%20to%20buy%20Robux%20worth%20'+amount);
+              } else if(method === 'gopay'){
+                alert('Scan QRIS to pay: '+amount);
+              } else {
+                alert('Invalid payment method');
+              }
+            }
+          </script>
+        </body>
+        </html>
+      `);
+    }
+
+    function openFreeFire(){
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(`
+        <html>
+        <head>
+          <title>Free Fire Top-Up</title>
+          <style>
+            body { font-family: Arial; background:#0b0b1c; color:#fff; margin:0; padding:0;}
+            .banner { width:100%; height:200px; background:url('https://foto.kontan.co.id/T_ERJBdI40pIGqFC9mPectwL0M8=/smart/2025/01/17/990346388p.jpg') center/cover no-repeat; }
+            .choices { padding:20px; }
+            button { width:100%; margin:10px 0; padding:15px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background:#4b47f6; color:#fff; }
+            button:hover { background:#6d6aff; }
+          </style>
+        </head>
+        <body>
+          <div class="banner"></div>
+          <div class="choices">
+            <h3>Choose Diamond Amount</h3>
+            <button onclick="payment('8.700')">70 Diamond - 8.700</button>
+            <button onclick="payment('17.500')">140 Diamond - 17.500</button>
+            <button onclick="payment('26.000')">200 Diamond - 26.000</button>
+            <button onclick="payment('43.500')">355 Diamond - 43.500</button>
+            <button onclick="payment('87.000')">720 Diamond - 87.000</button>
+            <button onclick="payment('135.000')">1080 Diamond - 135.000</button>
+          </div>
+          <script>
+            function payment(amount){
+              const method = prompt('Choose payment method: WhatsApp or GoPay').toLowerCase();
+              if(method === 'whatsapp'){
+                window.open('https://wa.me/82131800830?text=Hi%20I%20want%20to%20buy%20Free%20Fire%20diamonds%20worth%20'+amount);
+              } else if(method === 'gopay'){
+                alert('Scan QRIS to pay: '+amount);
+              } else {
+                alert('Invalid payment method');
+              }
+            }
+          </script>
+        </body>
+        </html>
+      `);
+    }
+  </script>
+
+</body>
+</html>
